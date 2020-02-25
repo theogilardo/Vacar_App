@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
 
-  def index
-    @reviews = Review.all
-  end
+  # def index
+  #   @reviews = Review.all
+  # end
 
   def new
     @review = Review.new
@@ -13,9 +13,11 @@ class ReviewsController < ApplicationController
   end
 
   def create
+
     @review = Review.new(review_params)
+    @review.car = @car
     if @review.save
-      redirect_to review_path(@review)
+      redirect_to car_review_path(@review)
     else
       render 'new'
     end
