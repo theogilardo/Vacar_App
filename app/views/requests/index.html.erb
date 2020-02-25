@@ -1,0 +1,10 @@
+<h1>all the requests</h1>
+<% @requests.each do |request| %>
+
+<p><%=request.car.brand%></p>
+<p><%=  request.drop_off_date%></p>
+<p><%=  request.pick_up_date%></p>
+
+<% end %>
+
+<%= link_to "back to cars", cars_path, class: "btn btn-primary btn-lg" %>

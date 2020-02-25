@@ -13,6 +13,7 @@
         <p><%= car.registration_number %></p>
         <p><%= car.transmission %></p>
         <p><%= car.airconditioning %></p>
+      <%= link_to "show car", car_path(car), class: "btn btn-primary btn-lg" %>
       <% end %>
       </div>
     </div>
