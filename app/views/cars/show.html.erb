@@ -9,6 +9,7 @@
         <p><%= @car.registration_number %></p>
         <p><%= @car.transmission %></p>
         <p><%= @car.airconditioning %></p>
+        <%= f.input :photo, as: :file %>
 
         <%= link_to car_path(@car), method: :delete, data: { confirm: "Are you sure?" } do %>
         <i class="fas fa-trash-alt"></i>
