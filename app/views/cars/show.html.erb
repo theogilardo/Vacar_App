@@ -13,8 +13,8 @@
       <p>Transmission: <%= @car.transmission %></p>
       <p>Air Conditionning: <%= @car.airconditioning %></p>
     </div>
-    <div class="col-sm-6">
-      <%= cl_image_tag @car.photo.key, height: 300, width: 300, crop: :fill %> <br/>
+    <div class="col-sm-6" >
+      <%= cl_image_tag @car.photo.attached? ? @car.photo.key : "injcuuecln8fvf2vo2zg", width: 400, height: 300, crop: :fill, :cloud_name => "dir0nw4ok"%>
     </div>
   </div>
   <%= link_to car_path(@car), method: :delete, data: { confirm: "Are you sure?" } do %>
