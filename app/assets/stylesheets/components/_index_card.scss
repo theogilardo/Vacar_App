@@ -17,6 +17,14 @@
   }
 }
 
+.price-card {
+    position: absolute;
+    bottom: 0px;
+    right: 24px;
+    color: #719ff5e0;
+    font-weight: bold;
+}
+
 .car-grid {
   margin-top: 32px;
   display: grid;
