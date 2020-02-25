@@ -1,0 +1,7 @@
+<%= simple_form_for(@review) do |f| %>
+<div class="form-group">
+  <%= f.input :rating %>
+  <%= f.input :text %>
+  <%= f.button :submit, {class: "btn btn-primary"}%>
+</div>
+<% end %>

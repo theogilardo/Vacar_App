@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <h1>Your review</h1>
+        <p>Rating: <%= @review.rating %></p>
+        <p>Review: <%= @review.text %></p>
+        <%= link_to "All reviews",  reviews_path, {class: "btn btn-primary"} %>
+    </div>
+  </div>
+</div>
