@@ -1,20 +1,18 @@
-<h1>Cars List</h1>
 <div class="container">
-  <div class="row">
-    <div class="col-6 offset-3">
+<h1>Cars List</h1>
       <h1>The car you choose. No counters, no queues, no hidden extras</h1>
       <h2>Hire cars from people like you</h2>
       <p>Seach Bar Below</p>
-      <% @cars.each do |car| %>
-        <p><%= car.brand %></p>
-        <p><%= car.model %></p>
-        <p><%= car.year %></p>
-        <p><%= car.number_of_seats %></p>
-        <p><%= car.registration_number %></p>
-        <p><%= car.transmission %></p>
-        <p><%= car.airconditioning %></p>
-      <% end %>
-      </div>
-    </div>
-  </div>
+          <div class="container">
+            <div class="car-grid">
+              <% @cars.each do |car| %>
+              <div class="index-car-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path car.photo.attached? ? car.photo.key : "injcuuecln8fvf2vo2zg", width: 400, height: 300, crop: :fill, :cloud_name => "dir0nw4ok"%>');">
+                <h3><%= link_to "#{car.brand}", car_path(car.id) %></h3>
+                <p class="price-card"><%= car.price %></p>
+                </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
 </div>
