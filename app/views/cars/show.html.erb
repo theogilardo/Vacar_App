@@ -9,6 +9,9 @@
         <p><%= @car.registration_number %></p>
         <p><%= @car.transmission %></p>
         <p><%= @car.airconditioning %></p>
+        <%= link_to car_path(@car), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class="fas fa-trash-alt"></i>
+        <% end %>
     </div>
   </div>
 </div>
