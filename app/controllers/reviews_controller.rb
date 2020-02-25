@@ -1,4 +1,4 @@
-# class ReviewsController < ApplicationController
+class ReviewsController < ApplicationController
 
 #   def index
 #   @reviews = Review.all
@@ -8,20 +8,22 @@
 #     @review = Review.find(params[:id])
 #   end
 
-#   def new
-#     @review = Review.new
-#   end
+  def new
+    @request = Request.find(params[:request_id])
+    @review = Review.new
+  end
 
-#   def create
-#     @review = Review.new(review_params)
-#     @review.user = current_user
-#     if @review.save
-#       redirect_to reviews_path
-#     else
-#       render :new
-#     end
-#   end
-
+  def create
+    @request = Request.find (params[:request_id])
+    @review = Review.new(review_params)
+    @review.request = @request
+    @review.user = current_user
+    if @review.save
+      redirect_to car_path(@car)
+    else
+      render :new
+    end
+  end
 #   def edit
 #     @review = Review.find(params[:id])
 #   end
@@ -41,7 +43,7 @@
 
 #   private
 
-#   def review_params
-#     params.require(:review).permit(:rating, :text)
-#   end
-# end
+  def review_params
+    params.require(:review).permit(:rating, :text)
+  end
+end

@@ -15,12 +15,12 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @car = Car.find(params[:car_id])
+    @car = Car.find(params[:request][:car_id])
     @request = Request.new(request_params)
     @request.car = @car
     @request.user = current_user
     if @request.save
-      redirect_to car_requests_path
+      redirect_to requests_path
     else
       render :new
     end
