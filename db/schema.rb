@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_24_162046) do
+ActiveRecord::Schema.define(version: 2020_02_25_095342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cars", force: :cascade do |t|
+    t.string "brand"
+    t.string "model"
+    t.integer "year"
+    t.integer "number_of_seats"
+    t.string "registration_number"
+    t.string "transmission"
+    t.boolean "airconditioning"
+    t.string "availability"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cars_on_user_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.bigint "car_id"
+    t.bigint "user_id"
+    t.bigint "review_id"
+    t.string "status", default: "pending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_requests_on_car_id"
+    t.index ["review_id"], name: "index_requests_on_review_id"
+    t.index ["user_id"], name: "index_requests_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.string "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +57,14 @@ ActiveRecord::Schema.define(version: 2020_02_24_162046) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cars", "users"
+  add_foreign_key "requests", "cars"
+  add_foreign_key "requests", "reviews"
+  add_foreign_key "requests", "users"
 end
