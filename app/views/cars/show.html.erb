@@ -9,14 +9,12 @@
         <p><%= @car.registration_number %></p>
         <p><%= @car.transmission %></p>
         <p><%= @car.airconditioning %></p>
-        <%= f.input :photo, as: :file %>
 
         <%= link_to car_path(@car), method: :delete, data: { confirm: "Are you sure?" } do %>
         <i class="fas fa-trash-alt"></i>
         <% end %>
-        <%= cl_image_tag("injcuuecln8fvf2vo2zg",
-              width: 400, height: 300, crop: :fill) %>
-
+<!--         cl_image_tag("injcuuecln8fvf2vo2zg", width: 400, height: 300, crop: :fill)
+ -->
         <%= link_to "Update",  edit_car_path, {class: "btn btn-primary"} %>
 
     </div>
