@@ -3,10 +3,12 @@
           <%= f.input :brand %>
           <%= f.input :model %>
           <%= f.input :year %>
+          <%= f.input :price %>
           <%= f.input :number_of_seats %>
           <%= f.input :registration_number %>
           <%= f.input :transmission %>
           <%= f.input :airconditioning %>
+          <%= f.input :photo, as: :file %>
 <!--           f.input :photo, as: :file -->
 <!--           f.input :availability -->
           <%= f.button :submit, {class: "btn btn-primary"}%>

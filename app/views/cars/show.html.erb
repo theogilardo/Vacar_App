@@ -1,19 +1,24 @@
 <div class="container">
-  <div class="row">
-    <div class="col-6 offset-3">
+  <div class="row" id="intro">
       <h1>Details of your car</h1>
-        <p><%= @car.brand %></p>
-        <p><%= @car.model %></p>
-        <p><%= @car.year %></p>
-        <p><%= @car.number_of_seats %></p>
-        <p><%= @car.registration_number %></p>
-        <p><%= @car.transmission %></p>
-        <p><%= @car.airconditioning %></p>
-        <%= link_to car_path(@car), method: :delete, data: { confirm: "Are you sure?" } do %>
-        <i class="fas fa-trash-alt"></i>
-        <%= link_to "edit car", edit_car_path(@car), class: "btn btn-primary btn-lg" %>
-        <%= link_to "request car", new_request_path(car_id: @car), class: "btn btn-primary btn-lg" %>
-        <% end %>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <p>Brand: <%= @car.brand %></p>
+      <p>Model: <%= @car.model %></p>
+      <p>Year: <%= @car.year %></p>
+      <p>Price: € <%= @car.price %></p>
+      <p>Number of seats: <%= @car.number_of_seats %></p>
+      <p>Registration Number: <%= @car.registration_number %></p>
+      <p>Transmission: <%= @car.transmission %></p>
+      <p>Air Conditionning: <%= @car.airconditioning %></p>
+    </div>
+    <div class="col-sm-6">
+      <%= cl_image_tag @car.photo.key, height: 300, width: 300, crop: :fill %> <br/>
     </div>
   </div>
+  <%= link_to car_path(@car), method: :delete, data: { confirm: "Are you sure?" } do %>
+  <i class="fas fa-trash-alt"></i>
+  <% end %>
+  <%= link_to "Update",  edit_car_path, {class: "btn btn-primary"} %>
 </div>
