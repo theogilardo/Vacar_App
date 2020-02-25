@@ -9,4 +9,5 @@ class Car < ApplicationRecord
   validates :registration_number, presence: true, uniqueness: true
   validates :transmission, presence: true
   validates :airconditioning, presence: true
+  validates :price, presence: true
 end
