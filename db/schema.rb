@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_095342) do
+ActiveRecord::Schema.define(version: 2020_02_25_131557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2020_02_25_095342) do
     t.string "registration_number"
     t.string "transmission"
     t.boolean "airconditioning"
-    t.string "availability"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,6 +36,8 @@ ActiveRecord::Schema.define(version: 2020_02_25_095342) do
     t.string "status", default: "pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "pick_up_date"
+    t.date "drop_off_date"
     t.index ["car_id"], name: "index_requests_on_car_id"
     t.index ["review_id"], name: "index_requests_on_review_id"
     t.index ["user_id"], name: "index_requests_on_user_id"
