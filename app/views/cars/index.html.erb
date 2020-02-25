@@ -1,8 +1,18 @@
+<h1>Cars List</h1>
 <div class="container">
   <div class="row">
     <div class="col-6 offset-3">
-      <h1>Update your car details</h1>
-        <%= render 'form'%>
+      <h1>This is the search bar</h1>
+      <% @cars.each do |car| %>
+        <p><%= car.brand %></p>
+        <p><%= car.model %></p>
+        <p><%= car.year %></p>
+        <p><%= car.number_of_seats %></p>
+        <p><%= car.registration_number %></p>
+        <p><%= car.transmission %></p>
+        <p><%= car.airconditioning %></p>
+      <% end %>
+      </div>
     </div>
   </div>
 </div>
