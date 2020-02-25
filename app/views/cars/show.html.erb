@@ -1,2 +1,18 @@
-<h1>Cars#show</h1>
-<p>Find me in app/views/cars/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+        <p><%= @car.brand %></p>
+        <p><%= @car.model %></p>
+        <p><%= @car.year %></p>
+        <p><%= @car.number_of_seats %></p>
+        <p><%= @car.registration_number %></p>
+        <p><%= @car.transmission %></p>
+        <p><%= @car.airconditioning %></p>
+
+        <%= link_to car_path(@car), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class="fas fa-trash-alt"></i>
+        <% end %>
+
+    </div>
+  </div>
+</div>
