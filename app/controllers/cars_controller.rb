@@ -19,7 +19,7 @@ class CarsController < ApplicationController
     @car = Car.new(car_params)
     @car.user = current_user
     if @car.save
-      redirect_to car_path(@car)
+      redirect_to dashboard_owner_path
     else
       render :new
     end
