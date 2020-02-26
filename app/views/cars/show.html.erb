@@ -30,7 +30,7 @@
   <div class="mt-5 ml-2">
   <%= link_to "Back",  cars_path, {class: "btn btn-primary"} %>
   <%= link_to "Update",  edit_car_path, {class: "btn btn-primary"} %>
-  <%= link_to "Request Now",  '#', {class: "btn btn-success request-btn"} %> <br/>
+  <%= link_to "Request Now",  new_car_request_path(@car), {class: "btn btn-success request-btn"} %> <br/>
   <%= link_to car_path(@car), method: :delete, data: { confirm: "Are you sure?" } do %>
   <i class="fas fa-trash-alt"></i>
   <% end %>
