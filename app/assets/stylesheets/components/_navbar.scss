@@ -4,9 +4,21 @@
 }
 
 .navbar-lewagon .navbar-collapse {
+  display: flex;
   flex-grow: 0;
+  justify-content: space-between;
 }
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.navbar a{
+  color: rgba(0, 0, 0, 0.9);
+  text-decoration: none;
+}
+
+.navbar img {
+  width: 45px;
+  height: 45px;
 }
