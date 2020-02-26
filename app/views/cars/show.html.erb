@@ -6,7 +6,8 @@
     <div class="box box1">
       <p><%= @car.brand %> <%=@car.model%> (<%=@car.year%>)</p>
       <h6 style="font-style: italic;">ID: <%= @car.registration_number %></h6>
-      <p>€ <%= @car.price %></p>
+      <p>€
+        <%= @car.price %></p>
       <div class="nested">
         <div>
           <p class="car_components">AC</p>
@@ -22,12 +23,14 @@
         </div>
       </div>
     </div>
-    <div class="box box2">
+    <div class="show_car_img box box2">
       <%= cl_image_tag @car.photo.attached? ? @car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
     </div>
   </div>
   <div class="mt-5 ml-2">
-  <%= link_to "Update",  edit_car_path, {class: "btn btn-primary"} %> <br/>
+  <%= link_to "Back",  cars_path, {class: "btn btn-primary"} %>
+  <%= link_to "Update",  edit_car_path, {class: "btn btn-primary"} %>
+  <%= link_to "Request Now",  new_car_request_path(@car), {class: "btn btn-success request-btn"} %> <br/>
   <%= link_to car_path(@car), method: :delete, data: { confirm: "Are you sure?" } do %>
   <i class="fas fa-trash-alt"></i>
   <% end %>

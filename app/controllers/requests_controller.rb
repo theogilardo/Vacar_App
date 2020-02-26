@@ -1,4 +1,5 @@
 class RequestsController < ApplicationController
+  before_action :set_car, only: [:create, :new]
 
   def index
   @requests = Request.all
@@ -6,21 +7,20 @@ class RequestsController < ApplicationController
 
   def show
     @request = Request.find(params[:id])
+    @car = @request.car
   end
 
   def new
-    @car = Car.find(params[:car_id])
     @request = Request.new
-
   end
 
   def create
-    @car = Car.find(params[:request][:car_id])
+
     @request = Request.new(request_params)
     @request.car = @car
     @request.user = current_user
     if @request.save
-      redirect_to requests_path
+      redirect_to dashboard_my_request_path
     else
       render :new
     end
@@ -44,6 +44,10 @@ class RequestsController < ApplicationController
   # end
 
   private
+
+   def set_car
+    @car = Car.find(params[:car_id])
+  end
 
   def request_params
     params.require(:request).permit(:drop_off_date, :pick_up_date)
