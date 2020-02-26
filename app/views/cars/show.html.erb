@@ -6,7 +6,7 @@
     <div class="box box1">
       <p><%= @car.brand %> <%=@car.model%> (<%=@car.year%>)</p>
       <h6 style="font-style: italic;">ID: <%= @car.registration_number %></h6>
-      <p>€ 19<%= @car.price %></p>
+      <p>€ <%= @car.price %></p>
       <div class="nested">
         <div>
           <p class="car_components">AC</p>
