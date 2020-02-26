@@ -1,4 +1,5 @@
 class CarsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
   @cars = Car.all
@@ -26,10 +27,13 @@ class CarsController < ApplicationController
 
   def edit
     @car = Car.find(params[:id])
+    authorize_owner!(@car)
   end
 
   def update
     @car = Car.find(params[:id])
+    authorize_owner!(@car)
+
     @car.update(car_params)
     @car.save
     redirect_to car_path(@car)
@@ -37,6 +41,7 @@ class CarsController < ApplicationController
 
   def destroy
     @car = Car.find(params[:id])
+    authorize_owner!(@car)
     @car.destroy
     redirect_to cars_path
   end
@@ -45,6 +50,13 @@ class CarsController < ApplicationController
 
   def car_params
     params.require(:car).permit(:brand, :price, :model, :number_of_seats, :registration_number, :transmission, :airconditioning, :year, :photo)
+  end
+
+  def authorize_owner!(car)
+    if current_user != car.user
+      flash[:notice] = "Bad user."
+      redirect_to cars_path
+    end
   end
 end
 
