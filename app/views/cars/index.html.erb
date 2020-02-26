@@ -8,7 +8,9 @@
               <% @cars.each do |car| %>
               <div class="index-car-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path car.photo.attached? ? car.photo.key : "injcuuecln8fvf2vo2zg", width: 400, height: 300, crop: :fill, :cloud_name => "dir0nw4ok"%>');">
                 <h3><%= link_to "#{car.brand}", car_path(car.id) %></h3>
-                <p class="price-card"><%= car.price %></p>
+                <h4 class="price-card"> € <%= car.price %></h4>
+                <i class="car-seats-logo"><%= image_tag "car.png" %>
+                <%= car.number_of_seats %></i>
                 </div>
                 <% end %>
               </div>

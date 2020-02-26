@@ -21,7 +21,8 @@
     position: absolute;
     bottom: 0px;
     right: 24px;
-    color: #719ff5e0;
+    color: white;
+    opacity: 0.8;
     font-weight: bold;
 }
 
@@ -63,9 +64,20 @@
   }
 }
 
-.shaken_by {
-  position: absolute;
-  bottom: -8px;
-  right: 14px;
-  color: white;
+.car-seats-logo img{
+    position: absolute;
+    top: 4px;
+    left: 15px;
+    color: white;
+    width: 20px;
+    height: 20px;
+}
+
+.car-seats-logo {
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    color: white;
+    width: 20px;
+    height: 20px;
 }
