@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :reviews, only: []
   end
 
-
-  get "/dashboard/request", to: "dashboard#request"
-  get "/dashboard/my_request", to: "dashboard#my_request"
+  resources :dashboards
+  get "/dashboard/owner", to: "dashboards#owner"
+  get "/dashboard/user", to: "dashboards#user"
 end

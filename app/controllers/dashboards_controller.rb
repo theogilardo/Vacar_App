@@ -1,16 +1,18 @@
 class DashboardsController < ApplicationController
+    before_action :authenticate_user!
 
-def show
-  @car = Car.find(params[:id])
-  @request = Request.new
-  @review = Review.new
+def owner
+  # binding.pry
+  @user = current_user
+  @cars = Car.where(user_id: @user.id)
+  @requests = Request.where(user_id: @user.id)
+  # @reviews = @user.request.review
+
 end
 
-def new
-  @car = Car.new
-  @re
+def user
+  @user = current_user
+  @requests = Request.where(user_id: @user.id)
 end
-
-
 
 end
