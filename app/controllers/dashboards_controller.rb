@@ -1,10 +1,6 @@
 class DashboardsController < ApplicationController
     before_action :authenticate_user!
 
-def index
-  Car.all
-end
-
 def owner
   # binding.pry
   @user = current_user

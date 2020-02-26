@@ -4,7 +4,12 @@
 <% @requests.each do |request|%>
 <p><%= request.car_id %></p>
 <p><%= request.status %></p>
-<%= link_to "delete request", delete_request_path(request), class: "btn btn-primary btn-lg" %>
 
+
+<!-- will be implemented when request has a destroy method
+ -->
+ <%#= link_to "delete request", delete_request_path(request), class: "btn btn-primary btn-lg" %>
 
 <% end %>
+
+<%= link_to "browse cars", cars_path(request), class: "btn btn-primary btn-lg" %>
