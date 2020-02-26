@@ -37,3 +37,20 @@
       <%= link_to "Request Now",  '#', {class: "btn btn-success text-white"} %>
     </div>
   </div>
+  <div class="mt-5 ml-2">
+
+  <%= link_to "Back",  cars_path, {class: "btn btn-primary"} %>
+
+  <% if current_user == @car.user %>
+    <%= link_to "Update",  edit_car_path, {class: "btn btn-primary"} %>
+    <%= link_to car_path(@car), method: :delete, data: { confirm: "Are you sure?" } do %>
+    <i class="fas fa-trash-alt"></i>
+    <% end %>
+  <% else %>
+    <%= link_to "Request Now",  new_car_request_path(@car), {class: "btn btn-success request-btn"} %> <br/>
+  <% end %>
+  </div>
+</div>
+
+
+  <%= link_to "show all cars",  edit_car_path, {class: "btn btn-primary"} %> <br/>
