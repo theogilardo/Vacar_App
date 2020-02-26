@@ -1,0 +1,22 @@
+<h1>dashboard for owners</h1>
+<h2>all your cars</h2>
+
+<% @cars.each do |car|%>
+<p><%= car.brand %></p>
+
+<%= link_to "show", car_path(car), class: "btn btn-primary btn-lg" %>
+
+<% end %>
+
+<h2>all your requests</h2>
+<% @requests.each do |request|%>
+
+<p><%= request.car_id %></p>
+<p><%= request.status %></p>
+<% end %>
+
+
+<!-- potential link for adding new car, does not work wel as it redirects to index function of cars afterwards -->
+<%= link_to "upload new car", new_car_path(request), class: "btn btn-primary btn-lg" %>
+
+

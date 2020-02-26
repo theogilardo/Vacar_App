@@ -26,14 +26,31 @@
     <div class="show_car_img box box2">
       <%= cl_image_tag @car.photo.attached? ? @car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
     </div>
+    <div class="btn-box1">
+      <%= link_to "Back",  cars_path, {class: "btn btn-primary"} %>
+      <%= link_to "Update",  edit_car_path, {class: "btn btn-primary"} %>
+      <%= link_to car_path(@car), method: :delete, data: { confirm: "Are you sure?" } do %>
+      <i class="fas fa-trash-alt"></i>
+      <% end %>
+    </div>
+    <div class="btn-box2">
+      <%= link_to "Request Now",  '#', {class: "btn btn-success text-white"} %>
+    </div>
   </div>
   <div class="mt-5 ml-2">
+
   <%= link_to "Back",  cars_path, {class: "btn btn-primary"} %>
-  <%= link_to "Update",  edit_car_path, {class: "btn btn-primary"} %>
-  <%= link_to "Request Now",  '#', {class: "btn btn-success request-btn"} %> <br/>
-  <%= link_to car_path(@car), method: :delete, data: { confirm: "Are you sure?" } do %>
-  <i class="fas fa-trash-alt"></i>
+
+  <% if current_user == @car.user %>
+    <%= link_to "Update",  edit_car_path, {class: "btn btn-primary"} %>
+    <%= link_to car_path(@car), method: :delete, data: { confirm: "Are you sure?" } do %>
+    <i class="fas fa-trash-alt"></i>
+    <% end %>
+  <% else %>
+    <%= link_to "Request Now",  new_car_request_path(@car), {class: "btn btn-success request-btn"} %> <br/>
   <% end %>
   </div>
 </div>
 
+
+  <%= link_to "show all cars",  edit_car_path, {class: "btn btn-primary"} %> <br/>
