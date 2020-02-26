@@ -1,8 +1,10 @@
 <%= simple_form_for(@request) do |f| %>
   <div class="form-group">
     <%= f.input :car_id, as: :hidden, input_html: {value: @car.id}  %>
-    <%= f.input :pick_up_date %>
-    <%= f.input :drop_off_date %>
+    <%= date_field(:search, :start_date) %>
     <%= f.button :submit, {class: "btn btn-primary"}%>
   </div>
 <% end %>
+
+<!--     <%= f.input :pick_up_date %>
+    <%= f.input :drop_off_date %> -->

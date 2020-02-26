@@ -1,0 +1,10 @@
+<h1>user</h1>
+
+<h2>all your requests</h2>
+<% @requests.each do |request|%>
+<p><%= request.car_id %></p>
+<p><%= request.status %></p>
+<%= link_to "delete request", delete_request_path(request), class: "btn btn-primary btn-lg" %>
+
+
+<% end %>
