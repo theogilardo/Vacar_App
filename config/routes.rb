@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
  resources :dashboards
+
   get "/dashboard/owner", to: "dashboards#owner"
   get "/dashboard/user", to: "dashboards#user"
 end
