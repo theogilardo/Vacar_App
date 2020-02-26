@@ -5,6 +5,8 @@
 <p><%=  request.drop_off_date%></p>
 <p><%=  request.pick_up_date%></p>
 
+<%#= link_to "add review", new_car_review_path(request.id), class: "btn btn-primary btn-lg" %>
+
 <% end %>
 
 <%= link_to "back to cars", cars_path, class: "btn btn-primary btn-lg" %>
