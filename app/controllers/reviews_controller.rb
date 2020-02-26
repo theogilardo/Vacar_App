@@ -1,49 +1,32 @@
+
 class ReviewsController < ApplicationController
 
-#   def index
-#   @reviews = Review.all
-#   end
-
-#   def show
-#     @review = Review.find(params[:id])
-#   end
+  # def index
+  #   @reviews = Review.all
+  # end
 
   def new
-    @request = Request.find(params[:request_id])
     @review = Review.new
   end
 
+  def show
+    @review = Review.find(params[:id])
+  end
+
   def create
-    @request = Request.find (params[:request_id])
+
     @review = Review.new(review_params)
-    @review.request = @request
-    @review.user = current_user
+    @review.car = @car
     if @review.save
-      redirect_to car_path(@car)
+      redirect_to car_review_path(@review)
     else
-      render :new
+      render 'new'
     end
   end
-#   def edit
-#     @review = Review.find(params[:id])
-#   end
 
-#   def update
-#     @review = Review.find(params[:id])
-#     @review.update(review_params)
-#     @review.save
-#     redirect_to review_path(@review)
-#   end
-
-#   def destroy
-#     @review = Review.find(params[:id])
-#     @review.destroy
-#     redirect_to reviews_path
-#   end
-
-#   private
-
+  private
   def review_params
     params.require(:review).permit(:rating, :text)
   end
 end
+
