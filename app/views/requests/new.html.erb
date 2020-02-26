@@ -1,8 +1,16 @@
-<%= simple_form_for([@car, @request]) do |f| %>
-  <div class="form-group">
-    <%= f.input :pick_up_date %>
-    <%= f.input :drop_off_date %>
-    <%= f.button :submit, {class: "btn btn-primary"}
-     %>
+ <div class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <%= simple_form_for([@car, @request]) do |f| %>
+      <div class="form-group">
+        <%= f.input :pick_up_date %>
+        <%= f.input :drop_off_date %>
+        <%= f.button :submit, {class: "btn btn-primary"}
+        %>
+      </div>
+        <% end %>
+
+    </div>
   </div>
-<% end %>
+</div>
+
