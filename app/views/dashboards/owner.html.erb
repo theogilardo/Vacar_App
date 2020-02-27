@@ -1,27 +1,42 @@
-<h1>dashboard for owners</h1>
-<%= link_to "rent a car!", dashboard_user_path(@user), class: "btn btn-primary btn-lg" %>
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <h1>dashboard for owners</h1>
+        <%= link_to "rent a car!", dashboard_user_path(@user), class: "btn btn-primary btn-lg" %>
+        <h2>all your cars</h2>
 
-<h2>all your cars</h2>
+      <div class="container">
+        <div class="car-grid">
+          <% @cars.each do |car| %>
+          <div class="index-car-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path car.photo.attached? ? car.photo.key : "injcuuecln8fvf2vo2zg", width: 100, height: 100, crop: :fill, :cloud_name => "dir0nw4ok"%>');">
+            <h3><%= link_to "#{car.brand}", car_path(car.id) %></h3>
+            <h4 class="price-card"> € <%= car.price %></h4>
+            <i class="car-seats-logo"><%= image_tag "car.png" %>
+              <%= car.number_of_seats %></i>
+            </div>
+            <%= link_to "delete car", destroy_car_path(car), method: :delete, class: "btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        </div>
+        
 
-<% @cars.each do |car|%>
-<p><%= car.brand %></p>
-<%= link_to "delete car", destroy_car_path(car), method: :delete, class: "btn btn-primary btn-lg" %>
-<%= link_to "show", car_path(car), class: "btn btn-primary btn-lg" %>
+        <h2>all your requests</h2>
 
-<% end %>
+        <% @my_cars_requests.each do |request|%>
+          <div class="card-product">
+            <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
+            <div class="card-product-infos">
+              <h2>request.car.brand</h2>
+              <p><%= request.status %></p>
+              <p><%= request.car.start_date%></p>
+              <p><%= request.car.end_date%></p>
+             <%= link_to "delete request", destroy_request_path(request), method: :delete, class: "btn btn-primary btn-lg" %>
+            </div>
+          </div>
 
-<h2>all your requests</h2>
-<% @my_cars_requests.each do |request|%>
-
-<p><%= request.car_id %></p>
-<p><%= request.status %></p>
-<%= link_to "delete request", destroy_request_path(request), method: :delete, class: "btn btn-primary btn-lg" %>
-
-<% end %>
-<br>
-
-
+        <% end %>
 <!-- potential link for adding new car, does not work wel as it redirects to index function of cars afterwards -->
-<%= link_to "upload new car", new_car_path(request), class: "btn btn-primary btn-lg" %>
-
-
+        <%= link_to "upload new car", new_car_path(request), class: "btn btn-primary btn-lg" %>
+    </div>
+  </div>
+</div>
