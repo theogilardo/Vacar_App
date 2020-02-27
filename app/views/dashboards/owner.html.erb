@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="d-flex profile-container">
+
+      <!-- user profile harcoded for now -->
       <div class="profile-card">
         <div>
           <h3>Personal Info</h3>
@@ -14,6 +16,7 @@
         </div>
       </div>
 
+      <!-- manage cars container, add or remove, update cars, cars cards -->
       <div class="container manage-cars justify-content-center">
         <h2>Manage your cars</h2>
         <div class="index-car-card-grid ">
@@ -27,24 +30,31 @@
           <% end %>
         </div>
       </div>
+    </div>
+  </div>
+</div>
 
 
-    <h2>all your requests</h2>
+<div class="container">
+  <div class="row">
+    <div class="d-flex profile-container">
+<div>
+  <h2>all your requests</h2>
 
-    <% @my_cars_requests.each do |request|%>
-    <div class="card-product">
-      <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
-      <div class="card-product-infos">
-        <h2>Car: <%=  request.car.brand %></h2>
-        <p>Status: <%= request.status %></p>
-        <p>Pickup date: <%= request.car.start_date%></p>
-        <p>Return date: <%= request.car.end_date%></p>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#accept">
-            accept
-          </button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#decline">
-            decline
-          </button>
+  <% @my_cars_requests.each do |request|%>
+  <div class="request-cards">
+    <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
+    <div class="request-card">
+      <h2>Car: <%=  request.car.brand %></h2>
+      <p>Status: <%= request.status %></p>
+      <p>Pickup date: <%= request.car.start_date%></p>
+      <p>Return date: <%= request.car.end_date%></p>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#accept">
+        accept
+      </button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#decline">
+        decline
+      </button>
 
       <!-- Modal -->
       <div class="modal fade" id="accept" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -67,7 +77,6 @@
         </div>
       </div>
 
-
       <!-- Modal -->
       <div class="modal fade" id="decline" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -88,17 +97,17 @@
           </div>
         </div>
       </div>
-  </div>
-
-
+      <!-- end of my requests cards, including modals -->
       <% end %>
       <%= link_to "add a car", new_car_path(request), class: "btn btn-primary", id: "upload_car" %>
-    <%= link_to "rent a car!", dashboard_user_path(@user), class: "btn btn-primary btn-lg" %>
-      </div>
-      </div>
+      <%= link_to "rent a car!", dashboard_user_path(@user), class: "btn btn-primary btn-lg" %>
+    </div>
   </div>
 </div>
 </div>
+  </div>
+</div>
+
 
 
 
