@@ -1,4 +1,7 @@
-<h1>user</h1>
+<h1>dashboard for user</h1>
+
+<%= link_to "rent out cars!", dashboard_owner_path(@user), class: "btn btn-primary btn-lg" %>
+
 
 <h2>all your requests</h2>
 <% @requests.each do |request|%>

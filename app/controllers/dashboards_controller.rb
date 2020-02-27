@@ -5,7 +5,7 @@ def owner
   # binding.pry
   @user = current_user
   @cars = Car.where(user_id: @user.id)
-  @requests = Request.where(user_id: @user.id)
+  @my_cars_requests = Request.where(car_id: @cars)
   # @reviews = @user.request.review
 
 end
