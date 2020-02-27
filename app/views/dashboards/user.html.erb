@@ -21,8 +21,7 @@
       <% end %>
 
 
-<!-- will be implemented when request has a destroy method
--->
+
 
       <h2> Previous bookings</h2>
       <% @requests.where("status = ? AND drop_off_date < ?", "accepted", Date.today ).each do |request|%>
@@ -34,6 +33,7 @@
           <p><%= request.drop_off_date %></p>
           <%= link_to "review", new_request_review_path(request),  class: "review-btn btn btn-primary btn-sm" %>
         </div>
+
 
     </div>
       <% end %>
