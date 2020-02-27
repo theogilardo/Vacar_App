@@ -1,6 +1,20 @@
 class RequestsController < ApplicationController
   before_action :set_car, only: [:create, :new]
 
+  def accept
+    @request = Request.find(params[:id])
+    @request.status = "accepted"
+    @request.save
+    redirect_to dashboard_owner_path
+  end
+
+  def declined
+    @request = Request.find(params[:id])
+    @request.status = "accepted"
+    @request.save
+    redirect_to dashboard_owner_path
+  end
+
   def index
   @requests = Request.all
   end
@@ -15,7 +29,6 @@ class RequestsController < ApplicationController
   end
 
   def create
-
     @request = Request.new(request_params)
     @request.car = @car
     @request.user = current_user

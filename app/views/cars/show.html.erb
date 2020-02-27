@@ -8,38 +8,51 @@
       <h6 style="font-style: italic;">ID: <%= @car.registration_number %></h6>
       <p>€
         <%= @car.price %></p>
-      <div class="nested">
-        <div>
-          <p class="car_components">AC</p>
-          <h6><%= @car.airconditioning %></h6>
-        </div>
-        <div>
-          <p class="car_components">Seats</p>
-          <h6><%= @car.number_of_seats %></h6>
-        </div>
-        <div>
-          <p class="car_components">Transmission</p>
-          <h6><%= @car.transmission %></h6>
+        <div class="nested">
+          <div>
+            <p class="car_components">AC</p>
+            <h6><%= @car.airconditioning %></h6>
+          </div>
+          <div>
+            <p class="car_components">Seats</p>
+            <h6><%= @car.number_of_seats %></h6>
+          </div>
+          <div>
+            <p class="car_components">Transmission</p>
+            <h6><%= @car.transmission %></h6>
+          </div>
         </div>
       </div>
+      <div class="show_car_img box box2">
+        <%= cl_image_tag @car.photo.attached? ? @car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
+      </div>
+      <div class="btn-box1">
+        <% if current_user == @car.user %>
+        <%= link_to "Update",  edit_car_path, {class: "btn btn-primary"} %>
+        <%= link_to "Delete", car_path(@car), class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure?"} %>
+        <% else %>
+      </div>
+      <div class="btn-box2">
+        <%= link_to "Request Now",  new_car_request_path(@car), {class: "btn btn-success request-btn"} %> <br/>
+        <% end %>
+        <%= link_to "Back",  cars_path, {class: "btn btn-primary"} %>
+      </div>
     </div>
-    <div class="show_car_img box box2">
-      <%= cl_image_tag @car.photo.attached? ? @car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
-    </div>
-    <div class="btn-box1">
-  <% if current_user == @car.user %>
-    <%= link_to "Update",  edit_car_path, {class: "btn btn-primary"} %>
-    <%= link_to "Delete", car_path(@car), class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure?"} %>
-  <% else %>
-    </div>
-    <div class="btn-box2">
-    <%= link_to "Request Now",  new_car_request_path(@car), {class: "btn btn-success request-btn"} %> <br/>
-  <% end %>
-  <%= link_to "Back",  cars_path, {class: "btn btn-primary"} %>
-    </div>
-  </div>
-  <div class="mt-5 ml-2">
-  </div>
-</div>
+    <h4> What people say about this car</h4>
+
+          <div class="cards">
+        <% @reviews.each do |review| %>
+        <div class="card-review">
+          <div class="card-review">
+            <p><%= review.rating %></p>
+            <p><%= review.text %></p>
+            <% end %>
+         </div>
+       </div>
+     </div>
+
+    <div class="mt-5 ml-2">
+   </div>
+ </div>
 
 
