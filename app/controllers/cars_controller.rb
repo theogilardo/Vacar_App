@@ -19,7 +19,7 @@ class CarsController < ApplicationController
     @car = Car.new(car_params)
     @car.user = current_user
     if @car.save
-      redirect_to dashboard_owner_path
+      redirect_to dashboard_owner_path(@car.user)
     else
       render :new
     end
@@ -43,7 +43,7 @@ class CarsController < ApplicationController
     @car = Car.find(params[:id])
     authorize_owner!(@car)
     @car.destroy
-    redirect_to cars_path
+    redirect_to dashboard_owner_path
   end
 
   private
