@@ -1,5 +1,5 @@
 class Car < ApplicationRecord
-  LOCATIONS = %w(gattzicairport banana)
+  LOCATIONS = %w(Orly Malpensa CDG-Paris Linate Heathrow)
   belongs_to :user
   has_many :requests, dependent: :destroy
   has_one_attached :photo
