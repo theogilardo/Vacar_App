@@ -39,20 +39,19 @@
       </div>
     </div>
     <h4> What people say about this car</h4>
-
-          <div class="cards">
-        <% @reviews.each do |review| %>
+    <div class="cards_review">
+      <% @reviews.each do |review| %>
         <div class="card-review">
-          <div class="card-review">
-            <p><%= review.rating %></p>
-            <p><%= review.text %></p>
+             <% counter = 0 %>
+            <% 5.times do %>
+              <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
+              <% counter += 1 %>
             <% end %>
-         </div>
-       </div>
-     </div>
-
-    <div class="mt-5 ml-2">
-   </div>
+          <h6><%= review.text %></h6>
+        </div>
+      <% end %>
+    </div>
  </div>
+
 
 

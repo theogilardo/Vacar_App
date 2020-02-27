@@ -1,11 +1,21 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 offset-3">
-      <h1>dashboard for owners</h1>
-      <%= link_to "rent a car!", dashboard_user_path(@user), class: "btn btn-primary btn-lg" %>
-      <h2>all your cars</h2>
+    <div class="d-flex profile-container">
+      <div class="profile-card">
+        <div>
+          <h3>Personal Info</h3>
+          <p>Sam Stokes</p>
+          <img class="avatar-large" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+        </div>
+        <div class="profile-content">
+          <p>Info: I travel for business a couple times a month, and I appreciate the possibility to park my car at the airport hussle-free while making some money when I am away.</p>
+          <p>Home Location: Amsterdam</p>
+          <p>Review Score: 4.8</p>
+        </div>
+      </div>
 
-      <div class="container">
+      <div class="container manage-cars justify-content-center">
+        <h2>Manage your cars</h2>
         <div class="index-car-card-grid ">
           <% @cars.each do |car| %>
           <div class="index-car-card-owner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path car.photo.attached? ? car.photo.key : "injcuuecln8fvf2vo2zg", width: 100, height: 100, crop: :fill, :cloud_name => "dir0nw4ok"%>');">
@@ -16,19 +26,20 @@
           </div>
           <% end %>
         </div>
+
       </div>
 
 
-      <h2>all your requests</h2>
-
-      <% @my_cars_requests.each do |request|%>
-      <div class="card-product">
-        <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
-        <div class="card-product-infos">
-          <h2>request.car.brand</h2>
-          <p><%= request.status %></p>
-          <p><%= request.car.start_date%></p>
-          <p><%= request.car.end_date%></p>
+    <h2>all your requests</h2>
+        
+    <% @my_cars_requests.each do |request|%>
+    <div class="card-product">
+      <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
+      <div class="card-product-infos">
+        <h2>Car: <%=  request.car.brand %></h2>
+        <p>Status: <%= request.status %></p>
+        <p>Pickup date: <%= request.car.start_date%></p>
+        <p>Return date: <%= request.car.end_date%></p> 
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#accept">
             accept
           </button>
@@ -83,15 +94,19 @@
 
 
       <% end %>
-      <%= link_to "Upload a car", new_car_path(request), class: "btn btn-primary", id: "upload_car" %>
+      <%= link_to "add a car", new_car_path(request), class: "btn btn-primary", id: "upload_car" %>
+
+ 
+
     </div>
+
+    <% end %>
+    <%= link_to "rent a car!", dashboard_user_path(@user), class: "btn btn-primary btn-lg" %>
   </div>
 </div>
 
 
 
 
-
-
-
 <!-- , data: {confirm: "really?"} -->
+
