@@ -4,6 +4,16 @@
     <h5>The car you choose. No counters, no queues, no hidden extras</h1>
       <h5>Rent cars from people like you</h2>
         <p>Seach Bar Below</p>
+
+        <%= form_tag cars_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Find your car"
+          %>
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
+
       </div>
       <div class="container">
         <div class="car-grid">
