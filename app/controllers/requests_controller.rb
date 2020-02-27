@@ -29,7 +29,6 @@ class RequestsController < ApplicationController
   end
 
   def create
-
     @request = Request.new(request_params)
     @request.car = @car
     @request.user = current_user

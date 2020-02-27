@@ -1,6 +1,7 @@
 class Car < ApplicationRecord
   belongs_to :user
   has_many :requests, dependent: :destroy
+  has_many :reviews, through: :requests
   has_one_attached :photo
 
   validates :photo, presence: true

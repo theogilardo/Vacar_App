@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     delete "/cars/:id", to:"cars#destroy", as: :destroy_car
 
   resources :requests, except: [:new, :create, :index] do
-    resources :reviews, only: []
+    resources :reviews, only: [:new, :create, :index]
     member do
       post 'accept'
       post 'decline'
