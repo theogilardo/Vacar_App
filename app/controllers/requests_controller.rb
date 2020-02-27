@@ -20,7 +20,7 @@ class RequestsController < ApplicationController
     @request.car = @car
     @request.user = current_user
     if @request.save
-      redirect_to dashboard_owner_path
+      redirect_to dashboard_user_path
     else
       render :new
     end
@@ -37,11 +37,11 @@ class RequestsController < ApplicationController
   #   redirect_to request_path(@request)
   # end
 
-  # def destroy
-  #   @request = Request.find(params[:id])
-  #   @request.destroy
-  #   redirect_to requests_path
-  # end
+  def destroy
+    @request = Request.find(params[:id])
+    @request.destroy
+    redirect_back(fallback_location: root_path)
+  end
 
   private
 

@@ -5,12 +5,13 @@ Rails.application.routes.draw do
   resources :cars do
     resources :requests, only: [:new, :create]
   end
+    delete "/cars/:id", to:"cars#destroy", as: :destroy_car
 
   resources :requests, except: [:new, :create, :index] do
     resources :reviews, only: []
   end
-
- resources :dashboards
+  delete "/requests/:id", to:"requests#destroy", as: :destroy_request
+  resources :dashboards
 
   get "/dashboard/owner", to: "dashboards#owner"
   get "/dashboard/user", to: "dashboards#user"

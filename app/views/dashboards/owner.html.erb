@@ -5,7 +5,7 @@
 
 <% @cars.each do |car|%>
 <p><%= car.brand %></p>
-
+<%= link_to "delete car", destroy_car_path(car), method: :delete, class: "btn btn-primary btn-lg" %>
 <%= link_to "show", car_path(car), class: "btn btn-primary btn-lg" %>
 
 <% end %>
@@ -15,7 +15,10 @@
 
 <p><%= request.car_id %></p>
 <p><%= request.status %></p>
+<%= link_to "delete request", destroy_request_path(request), method: :delete, class: "btn btn-primary btn-lg" %>
+
 <% end %>
+<br>
 
 
 <!-- potential link for adding new car, does not work wel as it redirects to index function of cars afterwards -->
