@@ -6,19 +6,18 @@
         <h2>all your cars</h2>
 
       <div class="container">
-        <div class="car-grid">
+        <div class="index-car-card-grid ">
           <% @cars.each do |car| %>
-          <div class="index-car-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path car.photo.attached? ? car.photo.key : "injcuuecln8fvf2vo2zg", width: 100, height: 100, crop: :fill, :cloud_name => "dir0nw4ok"%>');">
-            <h3><%= link_to "#{car.brand}", car_path(car.id) %></h3>
-            <h4 class="price-card"> € <%= car.price %></h4>
-            <i class="car-seats-logo"><%= image_tag "car.png" %>
-              <%= car.number_of_seats %></i>
+          <div class="index-car-card-owner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path car.photo.attached? ? car.photo.key : "injcuuecln8fvf2vo2zg", width: 100, height: 100, crop: :fill, :cloud_name => "dir0nw4ok"%>');">
+            <p><%= link_to "#{car.brand}", car_path(car.id) %></p>
+            <%= link_to car_path(car), class: 'car-delete', method: :delete, data: { confirm: "Are you sure?" } do %>
+              <i class="fas fa-trash-alt"></i>
+              <% end %>
             </div>
-            <%= link_to "delete car", destroy_car_path(car), method: :delete, class: "btn btn-primary btn-lg" %>
             <% end %>
           </div>
         </div>
-        
+
 
         <h2>all your requests</h2>
 
