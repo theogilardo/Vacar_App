@@ -20,7 +20,7 @@ class RequestsController < ApplicationController
     @request.car = @car
     @request.user = current_user
     if @request.save
-      redirect_to dashboard_owner_path
+      redirect_to dashboard_my_request_path
     else
       render :new
     end
