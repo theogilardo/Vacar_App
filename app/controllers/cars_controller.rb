@@ -2,10 +2,11 @@ class CarsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-  @cars = Car.all
-  @cars = @cars.where(location: params[:location]) if params[:location].present?
-  @cars = @cars.where('start_date > ?', params[:start_date]) if params[:start_date].present?
-  @cars = @cars.where('end_date < ?', params[:end_date]) if params[:end_date].present?
+    @locations = Car.all.pluck(:location).uniq
+    @cars = Car.all
+    @cars = @cars.where(location: params[:location]) if params[:location].present?
+    @cars = @cars.where('start_date > ?', params[:start_date]) if params[:start_date].present?
+    @cars = @cars.where('end_date < ?', params[:end_date]) if params[:end_date].present?
   end
 
   def show

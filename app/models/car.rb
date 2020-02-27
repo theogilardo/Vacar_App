@@ -1,5 +1,4 @@
 class Car < ApplicationRecord
-  LOCATIONS = %w(Orly Malpensa CDG-Paris Linate Heathrow)
   belongs_to :user
   has_many :requests, dependent: :destroy
   has_many :reviews, through: :requests
