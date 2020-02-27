@@ -4,19 +4,35 @@
     <h5>The car you choose. No counters, no queues, no hidden extras</h1>
       <h5>Rent cars from people like you</h2>
         <p>Seach Bar Below</p>
+
+<div class="grid">
+
+</div>
+<%= simple_form_for :car do |f| %>
+  <%= f.input :location, label: 'Select location', collection: @cars.map { |car| car.location }, input_html: {  } %>
+  <%= f.input :start_date, as: :date, label: "Pick-up date", html5: true %>
+  <%= f.input :end_date, as: :date, label: "Drop date", html5: true  %>
+  <%= f.button :submit, label: 'Seach Car' %>
+  <% end %>
+
+
+
+</div>
+<div class="container">
+  <div class="car-grid">
+
+# if git c
+
+    <% @cars.each do |car| %>
+    <div class="index-car-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path car.photo.attached? ? car.photo.key : "injcuuecln8fvf2vo2zg", width: 400, height: 300, crop: :fill, :cloud_name => "dir0nw4ok"%>');">
+      <h3><%= link_to "#{car.brand}", car_path(car.id) %></h3>
+      <h4 class="price-card"> € <%= car.price %></h4>
+      <i class="car-seats-logo"><%= image_tag "car.png" %>
+        <%= car.number_of_seats %></i>
       </div>
-      <div class="container">
-        <div class="car-grid">
-          <% @cars.each do |car| %>
-          <div class="index-car-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path car.photo.attached? ? car.photo.key : "injcuuecln8fvf2vo2zg", width: 400, height: 300, crop: :fill, :cloud_name => "dir0nw4ok"%>');">
-            <h3><%= link_to "#{car.brand}", car_path(car.id) %></h3>
-            <h4 class="price-card"> € <%= car.price %></h4>
-            <i class="car-seats-logo"><%= image_tag "car.png" %>
-              <%= car.number_of_seats %></i>
-            </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
+</div>
+</div>
+</div>
