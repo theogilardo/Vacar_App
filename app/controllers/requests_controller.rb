@@ -10,7 +10,7 @@ class RequestsController < ApplicationController
 
   def declined
     @request = Request.find(params[:id])
-    @request.status = "accepted"
+    @request.status = "declined"
     @request.save
     redirect_to dashboard_owner_path
   end

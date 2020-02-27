@@ -32,38 +32,24 @@
         </div>
       </div>
     </div>
+  </div>
 
+  <div>
+    <h2>all your requests</h2>
     <% @my_cars_requests.each do |request|%>
     <div class="card-product">
       <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
       <div class="card-product-infos">
-        <h2>request.car.brand</h2>
-        <p><%= request.status %></p>
-        <p><%= request.car.start_date%></p>
-        <p><%= request.car.end_date%></p>
+        <h2>Car: <%=  request.car.brand %></h2>
+        <p>Status: <%= request.status %></p>
+        <p>Pickup date: <%= request.car.start_date%></p>
+        <p>Return date: <%= request.car.end_date%></p>
         <%= link_to "accept", accept_request_path(request), method: :post, class: "btn btn-primary btn-lg" %>
         <%= link_to "decline", decline_request_path(request), method: :post, class: "btn btn-primary btn-lg" %>
       </div>
     </div>
 
     <% end %>
+    <%= link_to "rent a car!", dashboard_user_path(@user), class: "btn btn-primary btn-lg" %>
   </div>
 </div>
-<%= link_to "rent a car!", dashboard_user_path(@user), class: "btn btn-primary btn-lg" %>
-
-
-<h2>all your requests</h2>
-
-<% @my_cars_requests.each do |request|%>
-<div class="card-product">
-  <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
-  <div class="card-product-infos">
-    <h2>request.car.brand</h2>
-    <p><%= request.status %></p>
-    <p><%= request.car.start_date%></p>
-    <p><%= request.car.end_date%></p>
-    <%= link_to "accept", accept_request_path(request), method: :post, class: "btn btn-primary btn-lg" %>
-    <%= link_to "decline", decline_request_path(request), method: :post, class: "btn btn-primary btn-lg" %>
-  </div>
-</div>
-<% end %>
