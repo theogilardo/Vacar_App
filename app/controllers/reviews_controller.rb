@@ -11,6 +11,7 @@ class ReviewsController < ApplicationController
 
   def create
     @request = Request.find(params[:request_id])
+    @car = @request.car
     @review = Review.new(review_params)
     @review.request = @request
     if @review.save
