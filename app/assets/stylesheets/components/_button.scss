@@ -19,6 +19,8 @@
 
 // remove padding from log in and sign up buttons so they are aligned under each other
 
-// input.btn{
-//   padding: 0px;
-// }
+input.btn{
+  background-color: $blue;
+  margin: 30px 0px;
+  color: white;
+}
