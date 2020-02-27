@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     delete "/cars/:id", to:"cars#destroy", as: :destroy_car
 
   resources :requests, except: [:new, :create, :index] do
-    resources :reviews, only: []
+    resources :reviews, only: [:new, :create, :index]
   end
   delete "/requests/:id", to:"requests#destroy", as: :destroy_request
   resources :dashboards
