@@ -1,9 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="d-flex profile-container justify-content-center">
-
       <!-- user profile harcoded for now -->
-
       <div class="manage-cars ">
         <div class="d-flex justify-content-between">
           <%= link_to "List your own car", dashboard_owner_path(@user), class: "btn btn-primary" %>
@@ -23,7 +21,6 @@
         </div>
         <% end %>
       </div>
-
       <div class="profile-card">
         <div>
           <h3>Personal Info</h3>
@@ -38,26 +35,14 @@
     </div>
   </div>
 </div>
-
-
 <div class="container">
-  <div class="previous-bookings">
+  <div class="">
     <div class="col-8 offset-2 ">
-
+      <% if @request.nil? %>
+      <% " " %>
+      <% else %>
       <h4 class="text-center">Previous bookings</h4>
-      <% @requests.each do |request|%>
-      <div class="card-product">
-        <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
-        <div class="card-product-infos">
-          <h2><%= request.car.brand %></h2>
-          <p><%= request.pick_up_date %></p>
-          <p><%= request.drop_off_date %></p>
-          <p><%= request.status %></p>
-          <%= link_to "delete request", destroy_request_path(request), method: :delete, class: "delete-btn btn btn-primary btn-sm" %>
-        </div>
-      </div>
       <% end %>
-
       <% @requests.where("status = ? AND drop_off_date < ?", "accepted", Date.today ).each do |request|%>
       <div class="card-product">
         <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
@@ -71,3 +56,4 @@
       <% end %>
     </div>
   </div>
+
