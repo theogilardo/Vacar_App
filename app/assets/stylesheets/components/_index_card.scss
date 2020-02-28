@@ -30,7 +30,6 @@ a:hover {
 
     &:hover {
       text-decoration: none !important;
-      color: $color4;
   }
 }
 
@@ -105,4 +104,15 @@ a:hover {
     color: white;
     width: 20px;
     height: 20px;
+}
+
+.car-location {
+    position: absolute;
+    top: 16px;
+    left: 35px;
+    color: white;
+    width: 20px;
+    height: 20px;
+    font-family: "Raleway";
+    font-weight: 400;
 }

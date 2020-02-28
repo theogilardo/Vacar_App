@@ -35,7 +35,7 @@
             <h4 class="price-card"> € <%= car.price %></h4>
             <i class="car-seats-logo"><%= image_tag "car.png" %>
               <%= car.number_of_seats %></i>
-              <i class="map-pin-logo fas fa-map-marker-alt">  <%= car.location %></i>
+              <i class="map-pin-logo fas fa-map-marker-alt"></i> <p class="car-location"> <%= car.location %></p>
           </div>
         <% end %>
       <% end %>
