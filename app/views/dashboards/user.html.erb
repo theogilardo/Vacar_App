@@ -1,44 +1,36 @@
 <div class="container">
-  <div class="row">
-    <div class="col-6 offset-3">
-      <h1>dashboard for user</h1>
-
-      <%= link_to "rent out cars!", dashboard_owner_path(@user), class: "btn btn-primary btn-lg" %>
-
-
-      <h2>all your requests</h2>
-      <% @requests.each do |request|%>
-      <div class="card-product">
-        <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
-        <div class="card-product-infos">
-          <h2><%= request.car.brand %></h2>
-          <p><%= request.pick_up_date %></p>
-          <p><%= request.drop_off_date %></p>
-          <p><%= request.status %></p>
-          <%= link_to "delete request", destroy_request_path(request), method: :delete, class: "delete-btn btn btn-primary btn-sm" %>
-        </div>
+  <div class="dashboard-box">
+    <div class="d-flex profile-container">
+      <div class="container manage-cars">
+        <h1>dashboard for <%= @user.first_name %></h1>
+        <h2>all your requests</h2>
+        <% @requests.each do |request|%>
+          <div class="card-product">
+            <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
+            <div class="card-product-infos">
+              <h2><%= request.car.brand %></h2>
+              <p><%= request.pick_up_date %></p>
+              <p><%= request.drop_off_date %></p>
+              <p><%= request.status %></p>
+              <%= link_to "delete request", destroy_request_path(request), method: :delete, class: "delete-btn btn btn-primary btn-sm" %>
+            </div>
+          </div>
+        <% end %>
+        <h2> Previous bookings</h2>
+        <% @requests.where("status = ? AND drop_off_date < ?", "accepted", Date.today ).each do |request|%>
+          <div class="card-product">
+            <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
+            <div class="card-product-infos">
+              <h2><%= request.car.brand %></h2>
+              <p><%= request.pick_up_date %></p>
+              <p><%= request.drop_off_date %></p>
+              <%= link_to "review", new_request_review_path(request),  class: "review-btn btn btn-primary btn-sm" %>
+            </div>
+          </div>
+        <% end %>
+        <%= link_to "browse cars", cars_path(request), class: "btn btn-primary btn-lg" %>
       </div>
-      <% end %>
-
-
-
-
-      <h2> Previous bookings</h2>
-      <% @requests.where("status = ? AND drop_off_date < ?", "accepted", Date.today ).each do |request|%>
-      <div class="card-product">
-        <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
-        <div class="card-product-infos">
-          <h2><%= request.car.brand %></h2>
-          <p><%= request.pick_up_date %></p>
-          <p><%= request.drop_off_date %></p>
-          <%= link_to "review", new_request_review_path(request),  class: "review-btn btn btn-primary btn-sm" %>
-        </div>
-
-
     </div>
-      <% end %>
-
-      <%= link_to "browse cars", cars_path(request), class: "btn btn-primary btn-lg" %>
-
+    <%= link_to "rent out cars!", dashboard_owner_path(@user), class: "btn btn-primary btn-lg" %>
   </div>
 </div>
