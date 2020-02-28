@@ -37,6 +37,15 @@ margin: 10px;
   background-color: white
 }
 
+.card-picture {
+  position: relative;
+}
+
+.icon_show img {
+  width: 55px;
+  height: 55px;
+}
+
 .nested > div > p {
   text-decoration: underline;
   font-weight: 300;

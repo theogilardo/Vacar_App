@@ -9,6 +9,13 @@
       <i class="fa fa-star"></i>
       <% end %>
       <p>€<%= @car.price %></p>
+      <div class="icon_show d-flex mt-3">
+        <%= image_tag "calendar.png"%>
+        <div class="ml-3">
+          <h6> <strong>From:</strong> <%= @car.start_date %></h6>
+          <h6> <strong>To:</strong> <%= @car.end_date %></h6>
+        </div>
+      </div>
       <div class="nested mt-3">
         <div>
           <p class="car_components">AC</p>
@@ -32,7 +39,10 @@
     </div>
 
     <div class="show_car_img box box2">
+     <div class="card-picture">
       <%= cl_image_tag @car.photo.attached? ? @car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
+       <i class="map-pin-logo fas fa-map-marker-alt"></i> <p class="car-location"> <%= @car.location %></p>
+     </div>
     </div>
 
     <div class="btn-box1">
