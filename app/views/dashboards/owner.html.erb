@@ -1,8 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="d-flex profile-container justify-content-center">
-
-      <!-- user profile hardcoded for now -->
+      <!-- user profile harcoded for now -->
       <div class="profile-card">
         <div>
           <h3>Personal Info</h3>
@@ -15,7 +14,6 @@
           <p>Review Score: 4.8</p>
         </div>
       </div>
-
       <!-- manage cars container, add or remove, update cars, cars cards -->
       <div class="container manage-cars justify-content-center align-items-center">
        <div class="d-flex justify-content-end">
@@ -34,11 +32,7 @@
           <i class="fas fa-trash-alt"></i>
           <% end %>
         </div>
-<<<<<<< HEAD
-        <%= link_to "list a car", new_car_path(request), class: "btn btn-primary", id: "upload_car" %>
-=======
         <% end %>
->>>>>>> e24a166b98e33a480411ee05715c485bd699d580
       </div>
       <% if @cars.empty? %>
       <%= link_to "List your car", new_car_path(request), class: "btn btn-primary", id: "upload_car" %>
@@ -49,48 +43,7 @@
   </div>
 </div>
 </div>
-
-
 <div class="container">
-<<<<<<< HEAD
-  <div class="d-flex requests-container justify-content-center">
-    <div>
-      <h2>Rent Requests</h2>
-
-      <% @my_cars_requests.each do |request|%>
-      <div class="request-cards ">
-        <div class="request-card d-flex">
-          <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
-          <div class="request-card-info">
-            <h4>Car: <%=request.car.brand %></h4>
-            <p>Status: <%= request.status %></p>
-            <p>Pickup date: <%= request.pick_up_date%></p>
-            <p>Return date: <%= request.drop_off_date%></p>
-          </div>
-          <button type="button" class="btn btn-primary accept-btn" data-toggle="modal" data-target="#accept">
-            Accept
-          </button>
-          <button type="button" class="btn btn-primary decline-btn" data-toggle="modal" data-target="#decline">
-            Decline
-          </button>
-
-          <!-- Modal -->
-          <div class="modal fade" id="accept" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Accept Request</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  Are you sure??
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                  <%= link_to "Accept", accept_request_path(request), method: :post, class: "btn btn-primary" %>
-=======
   <div class="">
     <div class="d-flex requests-container justify-content-center">
       <div>
@@ -102,6 +55,7 @@
         <% else %>
         <h2>Rent Requests</h2>
         <% end %>
+         <% end %>
         <% @my_cars_requests.each do |request|%>
         <div class="request-cards ">
           <div class="request-card d-flex">
@@ -118,7 +72,6 @@
             <button type="button" class="btn btn-primary decline-btn" data-toggle="modal" data-target="#decline">
               Decline
             </button>
-
             <!-- Modal -->
             <div class="modal fade" id="accept" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -136,30 +89,9 @@
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                     <%= link_to "Accept", accept_request_path(request), method: :post, class: "btn btn-primary" %>
                   </div>
->>>>>>> e24a166b98e33a480411ee05715c485bd699d580
                 </div>
               </div>
             </div>
-          </div>
-
-<<<<<<< HEAD
-          <!-- Modal -->
-          <div class="modal fade" id="decline" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Decline Request</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  Are you sure??
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                  <%= link_to "Decline", decline_request_path(request), method: :post, class: "btn btn-primary" %>
-=======
             <!-- Modal -->
             <div class="modal fade" id="decline" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -177,33 +109,16 @@
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                     <%= link_to "Decline", decline_request_path(request), method: :post, class: "btn btn-primary" %>
                   </div>
->>>>>>> e24a166b98e33a480411ee05715c485bd699d580
                 </div>
               </div>
             </div>
           </div>
+          <!-- end of my requests cards, including modals -->
+          <% end %>
         </div>
-<<<<<<< HEAD
-        <!-- end of my requests cards, including modals -->
-=======
->>>>>>> e24a166b98e33a480411ee05715c485bd699d580
-        <% end %>
       </div>
     </div>
   </div>
-
 </div>
 
-
-<div class="container">
-  <div class="d-flex requests-container justify-content-center">
-    <%= link_to "rent a car", dashboard_user_path(@user), class: "btn btn-primary"%>
-  </div>
-</div>
-
-
-
-
-
-  <!-- , data: {confirm: "really?"} -->
 
