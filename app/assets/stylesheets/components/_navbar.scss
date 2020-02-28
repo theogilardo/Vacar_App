@@ -13,9 +13,14 @@
   width: 40px;
 }
 
-.navbar a{
+.toplinks {
+color:black ;
+transition: all 0.2s ease;
+  &:hover {
   color: rgba(0, 0, 0, 0.9);
-  text-decoration: none;
+  border-bottom: 1mm ridge rgba(247, 176, 91, 1);
+  transition: all 0.2s ease;
+  }
 }
 
 .navbar img {
