@@ -51,8 +51,8 @@
   <div class="">
     <div class="d-flex requests-container justify-content-center">
       <div>
-        <% if @my_cars_requests.nil? %>
-        <% " " %>
+        <% if @my_cars_request.nil? %>
+        <%= " " %>
         <% else %>
         <% if @my_cars_requests.count < 2 %>
         <h2>Rent Request</h2>
@@ -90,7 +90,7 @@
                     Are you sure??
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                     <%= link_to "Accept", accept_request_path(request), method: :post, class: "btn btn-primary" %>
                   </div>
                 </div>
@@ -111,7 +111,7 @@
                     Are you sure??
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                     <%= link_to "Decline", decline_request_path(request), method: :post, class: "btn btn-primary" %>
                   </div>
                 </div>
