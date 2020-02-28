@@ -43,6 +43,10 @@
   padding: 2px 16px;
 }
 
+.fa-trash-alt{
+  color: $color3;
+}
+
 @media(max-width: 992px) {
  .index-car-card-grid {
     grid-template-columns: 1fr 1fr;
