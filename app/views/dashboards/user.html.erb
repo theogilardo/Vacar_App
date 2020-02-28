@@ -41,10 +41,13 @@
 
 
 <div class="container">
-  <div class="previous-bookings">
+  <div class="">
     <div class="col-8 offset-2 ">
-
+      <% if @request.nil? %>
+      <% " " %>
+      <% else %>
       <h4 class="text-center">Previous bookings</h4>
+      <% end %>
 
 
       <% @requests.where("status = ? AND drop_off_date < ?", "accepted", Date.today ).each do |request|%>
