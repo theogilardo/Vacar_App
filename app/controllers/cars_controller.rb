@@ -5,11 +5,11 @@ class CarsController < ApplicationController
     @locations = Car.all.pluck(:location).uniq
     @cars = Car.all
     @cars = @cars.where(location: params[:location]) if params[:location].present?
-    @cars = @cars.where("start_date > ?", params[:start_date]) if params[:start_date].present?
-    @cars = @cars.where("start_date < ?", params[:end_date]) if params[:end_date].present?
-    @cars = @cars.where("location = ? AND start_date > ?", params[:location], params[:start_date]) if(params[:location].present? && params[:start_date].present?)
-    @cars = @cars.where("location = ? AND end_date < ?", params[:location], params[:end_date] ) if (params[:location].present? && params[:end_date].present?)
-    @cars = @cars.where("location = ? AND start_date > ? AND end_date < ?", params[:location], params[:start_date], params[:end_date]) if (params[:location].present? && params[:start_date].present? && params[:end_date].present?)
+    @cars = @cars.where("start_date <= ?", params[:start_date]) if params[:start_date].present?
+    @cars = @cars.where("end_date >= ?", params[:end_date]) if params[:end_date].present?
+    # @cars = @cars.where("location = ? AND start_date > ?", params[:location], params[:start_date]) if(params[:location].present? && params[:start_date].present?)
+    # @cars = @cars.where("location = ? AND end_date < ?", params[:location], params[:end_date] ) if (params[:location].present? && params[:end_date].present?)
+    # @cars = @cars.where("location = ? AND start_date > ? AND end_date < ?", params[:location], params[:start_date], params[:end_date]) if (params[:location].present? && params[:start_date].present? && params[:end_date].present?)
   end
 
 
