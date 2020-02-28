@@ -12,9 +12,9 @@
           <div>
             <p class="car_components">AC</p>
             <% if @car.airconditioning == true %>
-           <span>YES</span>
+           <span>Yes</span>
             <% else %>
-            <span>NO</span>
+            <span>No</span>
             <% end %>
           </div>
           <div>
@@ -23,7 +23,7 @@
           </div>
           <div>
             <p class="car_components">Transmission</p>
-            <h6><%= @car.transmission %></h6>
+            <h6><%= @car.transmission.capitalize %></h6>
           </div>
         </div>
       </div>
