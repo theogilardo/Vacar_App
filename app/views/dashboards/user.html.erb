@@ -1,12 +1,50 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 offset-3">
-      <h1>dashboard for user</h1>
+    <div class="d-flex profile-container justify-content-center">
 
-      <%= link_to "rent out cars!", dashboard_owner_path(@user), class: "btn btn-primary btn-lg" %>
+      <!-- user profile harcoded for now -->
+
+      <div class="manage-cars ">
+        <div class="d-flex justify-content-between">
+          <%= link_to "List your own car", dashboard_owner_path(@user), class: "btn btn-primary" %>
+          <%= link_to "Rent a car", cars_path(request), class: "btn btn-primary" %>
+        </div>
+        <h3>Your Rent Requests</h3>
+        <% @requests.each do |request|%>
+        <div class="card-product">
+          <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
+          <div class="card-product-infos">
+            <h4>Car: <%= request.car.brand %></h4>
+            <p>Pickup date: <%= request.pick_up_date %></p>
+            <p>Return date: <%= request.drop_off_date %></p>
+            <p>Status: <%= request.status %></p>
+            <%= link_to "Cancel request", destroy_request_path(request), method: :delete, class: "delete-btn btn btn-primary btn-sm" %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="profile-card">
+        <div>
+          <h3>Personal Info</h3>
+          <p><%= @user.first_name %> <%=@user.last_name %></p>
+          <img class="avatar-large" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+        </div>
+        <div class="profile-content">
+          <p>"I travel for business a couple times a month, and I appreciate the possibility to park my car at the airport hussle-free while making some money when I am away."</p>
+          <p>Home Location: Amsterdam</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-      <h2>all your requests</h2>
+<div class="container">
+  <div class="previous-bookings">
+    <div class="col-8 offset-2 ">
+
+      <h4 class="text-center">Previous bookings</h4>
       <% @requests.each do |request|%>
       <div class="card-product">
         <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
@@ -20,10 +58,6 @@
       </div>
       <% end %>
 
-
-
-
-      <h2> Previous bookings</h2>
       <% @requests.where("status = ? AND drop_off_date < ?", "accepted", Date.today ).each do |request|%>
       <div class="card-product">
         <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
@@ -33,12 +67,7 @@
           <p><%= request.drop_off_date %></p>
           <%= link_to "review", new_request_review_path(request),  class: "review-btn btn btn-primary btn-sm" %>
         </div>
-
-
-    </div>
+      </div>
       <% end %>
-
-      <%= link_to "browse cars", cars_path(request), class: "btn btn-primary btn-lg" %>
-
+    </div>
   </div>
-</div>

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="text-center mt-3">
-    <h1>Cars List</h1>
+    <h1 class ="title">Cars List</h1>
     <h5>The car you choose. No counters, no queues, no hidden extras</h1>
       <h5>Rent cars from people like you</h2>
         <form  action="/cars" method="get">
@@ -25,18 +25,21 @@
           </div>
         </form>
       </div>
-      <div class="container">
-        <div class="car-grid">
-          <% @cars.each do |car| %>
+    </form>
+  </div>
+  <div class="container">
+    <div class="car-grid">
+      <% @cars.each do |car| %>
+        <%= link_to car_path(car.id) do %>
           <div class="index-car-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path car.photo.attached? ? car.photo.key : "injcuuecln8fvf2vo2zg", width: 400, height: 300, crop: :fill, :cloud_name => "dir0nw4ok"%>');">
-            <h3><%= link_to "#{car.brand}", car_path(car.id) %></h3>
+            <h3 class="brand-car"><%= car.brand %></h3>
             <h4 class="price-card"> € <%= car.price %></h4>
             <i class="car-seats-logo"><%= image_tag "car.png" %>
-              <%= car.number_of_seats %> - Start: <%= car.start_date %> End: <%= car.end_date %> </i>
-            </div>
-            <% end %>
+              <%= car.number_of_seats %></i>
+              <i class="map-pin-logo fas fa-map-marker-alt"></i> <p class="car-location"> <%= car.location %></p>
           </div>
-        </div>
-      </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
+</div>

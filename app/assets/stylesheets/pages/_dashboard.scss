@@ -4,7 +4,7 @@
 
 .profile-card {
   overflow: hidden;
-  height: auto;
+  height: 400px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 20px;
@@ -36,3 +36,16 @@
   display: flex;
   justify-content: space-around;
 }
+
+.previous-bookings{
+  overflow: hidden;
+  height: auto;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 10px 60px 40px 60px;
+  width: auto;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+}
+
