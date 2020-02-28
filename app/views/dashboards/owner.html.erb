@@ -17,27 +17,33 @@
       </div>
 
       <!-- manage cars container, add or remove, update cars, cars cards -->
-      <div class="container manage-cars justify-content-center">
-        <% if @cars.count < 2 %>
-        <h2>Manage your car</h2>
-        <% else %>
-        <h2>Manage your cars</h2>
-        <% end %>
-        <div class="index-car-card-grid ">
-          <% @cars.each do |car| %>
-          <div class="index-car-card-owner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path car.photo.attached? ? car.photo.key : "injcuuecln8fvf2vo2zg", width: 100, height: 100, crop: :fill, :cloud_name => "dir0nw4ok"%>');">
-            <p><%= link_to "#{car.brand}", car_path(car.id) %></p>
-            <%= link_to car_path(car), class: 'car-delete', method: :delete, data: { confirm: "Are you sure?" } do %>
-            <i class="fas fa-trash-alt"></i>
-            <% end %>
-          </div>
-          <% end %>
-        </div>
-        <%= link_to "List a car", new_car_path(request), class: "btn btn-primary", id: "upload_car" %>
+      <div class="container manage-cars justify-content-center align-items-center">
+       <div class="d-flex justify-content-end">
         <%= link_to "Rent a car", dashboard_user_path(@user), class: "btn btn-primary" %>
       </div>
+      <% if @cars.count < 2 %>
+      <h2>Manage your car</h2>
+      <% else %>
+      <h2>Manage your cars</h2>
+      <% end %>
+      <div class="index-car-card-grid ">
+        <% @cars.each do |car| %>
+        <div class="index-car-card-owner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path car.photo.attached? ? car.photo.key : "injcuuecln8fvf2vo2zg", width: 100, height: 100, crop: :fill, :cloud_name => "dir0nw4ok"%>');">
+          <p><%= link_to "#{car.brand}", car_path(car.id) %></p>
+          <%= link_to car_path(car), class: 'car-delete', method: :delete, data: { confirm: "Are you sure?" } do %>
+          <i class="fas fa-trash-alt"></i>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+      <% if @cars.empty? %>
+      <%= link_to "List your car", new_car_path(request), class: "btn btn-primary", id: "upload_car" %>
+      <% else %>
+      <%= link_to "Add another car", new_car_path(request), class: "btn btn-primary", id: "upload_car" %>
+      <% end %>
     </div>
   </div>
+</div>
 </div>
 
 
