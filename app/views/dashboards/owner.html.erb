@@ -67,17 +67,17 @@
               <p>Return date: <%= request.drop_off_date%></p>
             </div>
             <% if  request.status == "pending"%>
-              <button type="button" class="btn btn-primary accept-btn" data-toggle="modal" data-target="#accept">
+              <button type="button" class="btn btn-primary accept-btn" data-toggle="modal" data-target="#accept-<%=request.id%>">
                 Accept
               </button>
-              <button type="button" class="btn btn-primary decline-btn" data-toggle="modal" data-target="#decline">
+              <button type="button" class="btn btn-primary decline-btn" data-toggle="modal" data-target="#decline-<%=request.id%>">
                 Decline
               </button>
             <% end %>
 
 
             <!-- Modal -->
-            <div class="modal fade" id="accept" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="accept-<%=request.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -97,7 +97,7 @@
               </div>
             </div>
             <!-- Modal -->
-            <div class="modal fade" id="decline" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="decline-<%=request.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
