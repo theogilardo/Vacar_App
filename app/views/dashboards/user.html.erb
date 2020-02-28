@@ -42,24 +42,30 @@
 
 <div class="container">
   <div class="">
-    <div class="col-8 offset-2 ">
+    <div class="">
       <% if @requests.blank? %>
       <% " " %>
       <% else %>
+      <% if @requests.count < 2%>
+      <h4 class="text-center">Previous booking</h4>
+      <% else %>
       <h4 class="text-center">Previous bookings</h4>
       <% end %>
-
-
+      <% end %>
+      <div class="request-cards">
       <% @requests.where("status = ? AND drop_off_date < ?", "accepted", Date.today ).each do |request|%>
-      <div class="card-product">
-        <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
-        <div class="card-product-infos">
+      <div class="request-card d-flex ">
+        <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, :cloud_name => "dir0nw4ok"%>
+        <div class="request-card-info ">
           <h2>Car: <%= request.car.brand %></h2>
           <p>Pickup date: <%= request.pick_up_date %></p>
           <p>Return date: <%= request.drop_off_date %></p>
+        </div>
+          <div>
           <%= link_to "review", new_request_review_path(request),  class: "review-btn btn btn-primary btn-sm" %>
         </div>
       </div>
       <% end %>
+      </div>
     </div>
   </div>
