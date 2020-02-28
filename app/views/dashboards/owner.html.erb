@@ -5,8 +5,8 @@
       <div class="profile-card">
         <div>
           <h3>Personal Info</h3>
-          <p><%= @user.first_name %> <%=@user.last_name %></p>
-          <img class="avatar-large" alt="avatar" src="https://images.unsplash.com/photo-1565464027194-7957a2295fb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" />
+          <p><%= @user.first_name.capitalize %> <%=@user.last_name.capitalize %></p>
+          <img class="avatar-large" alt="avatar" src="https://images.unsplash.com/photo-1497551060073-4c5ab6435f12?ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80" />
         </div>
         <div class="profile-content">
           <p>"I travel for business a couple times a month, and I appreciate the possibility to park my car at the airport hussle-free while making some money when I am away."</p>
@@ -67,17 +67,17 @@
               <p>Return date: <%= request.drop_off_date%></p>
             </div>
             <% if  request.status == "pending"%>
-              <button type="button" class="btn btn-primary accept-btn" data-toggle="modal" data-target="#accept">
+              <button type="button" class="btn btn-primary accept-btn" data-toggle="modal" data-target="#accept-<%=request.id%>">
                 Accept
               </button>
-              <button type="button" class="btn btn-primary decline-btn" data-toggle="modal" data-target="#decline">
+              <button type="button" class="btn btn-primary decline-btn" data-toggle="modal" data-target="#decline-<%=request.id%>">
                 Decline
               </button>
             <% end %>
 
 
             <!-- Modal -->
-            <div class="modal fade" id="accept" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="accept-<%=request.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -97,7 +97,7 @@
               </div>
             </div>
             <!-- Modal -->
-            <div class="modal fade" id="decline" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="decline-<%=request.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
