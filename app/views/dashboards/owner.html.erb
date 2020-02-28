@@ -41,9 +41,10 @@
   <div class="">
     <div class="d-flex requests-container justify-content-center">
       <div>
-
+        <% if @my_cars_requests.nil? %>
+        <% " " %>
+        <% else %>
         <h2>Rent Requests</h2>
-
         <% @my_cars_requests.each do |request|%>
         <div class="request-cards ">
           <div class="request-card d-flex">
@@ -106,6 +107,7 @@
           <!-- end of my requests cards, including modals -->
           <% end %>
         </div>
+        <% end %>
       </div>
     </div>
   </div>
