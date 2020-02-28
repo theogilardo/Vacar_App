@@ -3,31 +3,28 @@
     <h1>Cars List</h1>
     <h5>The car you choose. No counters, no queues, no hidden extras</h1>
       <h5>Rent cars from people like you</h2>
-
-        <form action="/cars" method="get">
+        <form  action="/cars" method="get">
           <div class="row col-10 offset-1 mt-4">
             <div class="col-3">
               <select class="form-control" name="location" >
-                <option value="" selected disabled>Select Location</option>
+                <option value="" disabled>Select Location</option>
                 <option value="" ></option>
-                <%=  Car::LOCATIONS.each do |location| %>
-                  <option> <%= location  %> </option>
+                <%=  @locations.each do |location| %>
+                <option <%= params[:location] == location ? "selected" : "" %>> <%= location %> </option>
                 <% end %>
               </select>
             </div>
             <div class="col-3">
-              <input type="date" class="form-control" id="start_date" name='start_date'>
+              <input type="date" class="form-control" id="start_date" name='start_date' value= "<%= params[:start_date] %>">
             </div>
             <div class="col-3">
-              <input type="date" class="form-control" id="end_date" name='end_date'>
+              <input type="date" class="form-control" id="end_date" name='end_date' value= "<%= params[:end_date]%>">
             </div>
             <div class="col-3">
-              <button type="submit" class="btn btn-primary">Search</button>
+              <button type="submit" id="test-btn" class="btn btn-primary">Search</button>
             </div>
           </div>
         </form>
-
-
       </div>
       <div class="container">
         <div class="car-grid">
@@ -36,7 +33,7 @@
             <h3><%= link_to "#{car.brand}", car_path(car.id) %></h3>
             <h4 class="price-card"> € <%= car.price %></h4>
             <i class="car-seats-logo"><%= image_tag "car.png" %>
-              <%= car.number_of_seats %></i>
+              <%= car.number_of_seats %> - Start: <%= car.start_date %> End: <%= car.end_date %> </i>
             </div>
             <% end %>
           </div>

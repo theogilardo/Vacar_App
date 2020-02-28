@@ -11,7 +11,11 @@
         <div class="nested">
           <div>
             <p class="car_components">AC</p>
-            <h6><%= @car.airconditioning %></h6>
+            <% if @car.airconditioning == true %>
+           <span>YES</span>
+            <% else %>
+            <span>NO</span>
+            <% end %>
           </div>
           <div>
             <p class="car_components">Seats</p>
