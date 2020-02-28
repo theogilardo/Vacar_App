@@ -57,7 +57,13 @@
     </div>
 
     <div class="box3">
+      <h2>
+        <%= pluralize @car.reviews.size, "review" %>
+      </h2>
       <div class="cards_review">
+        <%  if @car.reviews.blank? %>
+          Be the first to leave a review for <%= @car.brand %> <%=@car.model %> !!
+          <% else %>
         <% @reviews.each do |review| %>
         <div class="card-review">
           <% counter = 0 %>
@@ -79,6 +85,7 @@
           <% @car.reviews each do |review| %>
           <p> review.text </p>
           <% end %>
+        
         <% end %>
       </div>
     </div>

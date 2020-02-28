@@ -25,7 +25,7 @@
         <div>
           <h3>Personal Info</h3>
           <p><%= @user.first_name %> <%=@user.last_name %></p>
-          <img class="avatar-large" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+          <img class="avatar-large" alt="avatar" src="https://images.unsplash.com/photo-1497551060073-4c5ab6435f12?ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80" />
         </div>
         <div class="profile-content">
           <p>"I travel for business a couple times a month, and I appreciate the possibility to park my car at the airport hussle-free while making some money when I am away."</p>
@@ -43,9 +43,9 @@
       <% " " %>
       <% else %>
       <% if @requests.count < 2%>
-      <h4 class="text-center">Previous booking</h4>
+      <h4 class="text-center mb-4">Previous booking</h4>
       <% else %>
-      <h4 class="text-center">Previous bookings</h4>
+      <h4 class="text-center mb-4">Previous bookings</h4>
       <% end %>
       <% end %>
       <div class="request-cards">
