@@ -47,13 +47,13 @@
   <div class="">
     <div class="d-flex requests-container justify-content-center">
       <div>
-        <% if @my_cars_requests.nil? %>
+        <% if @my_cars_requests.blank? %>
         <%= " " %>
         <% else %>
         <% if @my_cars_requests.count < 2 %>
-        <h2>Rent Request</h2>
+        <h2 class="text-center">Rent Request</h2>
         <% else %>
-        <h2>Rent Requests</h2>
+        <h2 class="text-center">Rent Requests</h2>
         <% end %>
          <% end %>
         <% @my_cars_requests.each do |request|%>
