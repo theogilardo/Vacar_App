@@ -2,14 +2,14 @@
           <div class="form-group">
           <%= f.input :brand %>
           <%= f.input :model %>
-          <%= f.input :year, input_html: { min: '2019' } %>
+          <%= f.input :year, input_html: { min: '0' } %>
           <%= f.input :price, input_html: { min: '0' } %>
           <%= f.input :number_of_seats, collection: 1..8 %>
           <%= f.input :registration_number %>
           <%= f.input :start_date %>
           <%= f.input :end_date %>
           <%= f.input :location %>
-          <%= f.input :transmission, collection: ['automatic', 'manual'] %>
+          <%= f.input :transmission, collection: ['Automatic', 'Manual'] %>
           <%= f.input :airconditioning %>
           <%= f.input :photo, as: :file %>
 <!--           f.input :photo, as: :file -->
