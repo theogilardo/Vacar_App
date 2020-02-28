@@ -17,26 +17,42 @@
       </div>
 
       <!-- manage cars container, add or remove, update cars, cars cards -->
-      <div class="container manage-cars justify-content-center">
-        <h2>Manage your cars</h2>
-        <div class="index-car-card-grid ">
-          <% @cars.each do |car| %>
-          <div class="index-car-card-owner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path car.photo.attached? ? car.photo.key : "injcuuecln8fvf2vo2zg", width: 100, height: 100, crop: :fill, :cloud_name => "dir0nw4ok"%>');">
-            <p><%= link_to "#{car.brand}", car_path(car.id) %></p>
-            <%= link_to car_path(car), class: 'car-delete', method: :delete, data: { confirm: "Are you sure?" } do %>
-            <i class="fas fa-trash-alt"></i>
-            <% end %>
-          </div>
+      <div class="container manage-cars justify-content-center align-items-center">
+       <div class="d-flex justify-content-end">
+        <%= link_to "Rent a car", dashboard_user_path(@user), class: "btn btn-primary" %>
+      </div>
+      <% if @cars.count < 2 %>
+      <h2>Manage your car</h2>
+      <% else %>
+      <h2>Manage your cars</h2>
+      <% end %>
+      <div class="index-car-card-grid ">
+        <% @cars.each do |car| %>
+        <div class="index-car-card-owner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path car.photo.attached? ? car.photo.key : "injcuuecln8fvf2vo2zg", width: 100, height: 100, crop: :fill, :cloud_name => "dir0nw4ok"%>');">
+          <p><%= link_to "#{car.brand}", car_path(car.id) %></p>
+          <%= link_to car_path(car), class: 'car-delete', method: :delete, data: { confirm: "Are you sure?" } do %>
+          <i class="fas fa-trash-alt"></i>
           <% end %>
         </div>
+<<<<<<< HEAD
         <%= link_to "list a car", new_car_path(request), class: "btn btn-primary", id: "upload_car" %>
+=======
+        <% end %>
+>>>>>>> e24a166b98e33a480411ee05715c485bd699d580
       </div>
+      <% if @cars.empty? %>
+      <%= link_to "List your car", new_car_path(request), class: "btn btn-primary", id: "upload_car" %>
+      <% else %>
+      <%= link_to "Add another car", new_car_path(request), class: "btn btn-primary", id: "upload_car" %>
+      <% end %>
     </div>
   </div>
+</div>
 </div>
 
 
 <div class="container">
+<<<<<<< HEAD
   <div class="d-flex requests-container justify-content-center">
     <div>
       <h2>Rent Requests</h2>
@@ -74,11 +90,59 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                   <%= link_to "Accept", accept_request_path(request), method: :post, class: "btn btn-primary" %>
+=======
+  <div class="">
+    <div class="d-flex requests-container justify-content-center">
+      <div>
+        <% if @my_cars_request.nil? %>
+        <%= " " %>
+        <% else %>
+        <% if @my_cars_requests.count < 2 %>
+        <h2>Rent Request</h2>
+        <% else %>
+        <h2>Rent Requests</h2>
+        <% end %>
+        <% @my_cars_requests.each do |request|%>
+        <div class="request-cards ">
+          <div class="request-card d-flex">
+            <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
+            <div class="request-card-info">
+              <h4>Car: <%=request.car.brand %></h4>
+              <p>Status: <%= request.status %></p>
+              <p>Pickup date: <%= request.pick_up_date%></p>
+              <p>Return date: <%= request.drop_off_date%></p>
+            </div>
+            <button type="button" class="btn btn-primary accept-btn" data-toggle="modal" data-target="#accept">
+              Accept
+            </button>
+            <button type="button" class="btn btn-primary decline-btn" data-toggle="modal" data-target="#decline">
+              Decline
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="accept" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Accept Request</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Are you sure??
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <%= link_to "Accept", accept_request_path(request), method: :post, class: "btn btn-primary" %>
+                  </div>
+>>>>>>> e24a166b98e33a480411ee05715c485bd699d580
                 </div>
               </div>
             </div>
           </div>
 
+<<<<<<< HEAD
           <!-- Modal -->
           <div class="modal fade" id="decline" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -95,12 +159,34 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                   <%= link_to "Decline", decline_request_path(request), method: :post, class: "btn btn-primary" %>
+=======
+            <!-- Modal -->
+            <div class="modal fade" id="decline" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Decline Request</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Are you sure??
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <%= link_to "Decline", decline_request_path(request), method: :post, class: "btn btn-primary" %>
+                  </div>
+>>>>>>> e24a166b98e33a480411ee05715c485bd699d580
                 </div>
               </div>
             </div>
           </div>
         </div>
+<<<<<<< HEAD
         <!-- end of my requests cards, including modals -->
+=======
+>>>>>>> e24a166b98e33a480411ee05715c485bd699d580
         <% end %>
       </div>
     </div>
