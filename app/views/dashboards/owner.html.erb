@@ -44,7 +44,11 @@
         <% if @my_cars_requests.nil? %>
         <% " " %>
         <% else %>
+        <% if @my_cars_requests.count < 2 %>
+        <h2>Rent Request</h2>
+        <% else %>
         <h2>Rent Requests</h2>
+        <% end %>
         <% @my_cars_requests.each do |request|%>
         <div class="request-cards ">
           <div class="request-card d-flex">
