@@ -7,10 +7,10 @@
           <div class="row col-10 offset-1 mt-4">
             <div class="col-3">
               <select class="form-control" name="location" >
-                <option value="" selected disabled>Select Location</option>
+                <option value="" disabled>Select Location</option>
                 <option value="" ></option>
                 <%=  @locations.each do |location| %>
-                <option> <%= location %> </option>
+                <option <%= params[:location] == location ? "selected" : "" %>> <%= location %> </option>
                 <% end %>
               </select>
             </div>
@@ -33,7 +33,7 @@
             <h3><%= link_to "#{car.brand}", car_path(car.id) %></h3>
             <h4 class="price-card"> € <%= car.price %></h4>
             <i class="car-seats-logo"><%= image_tag "car.png" %>
-              <%= car.number_of_seats %></i>
+              <%= car.number_of_seats %> - Start: <%= car.start_date %> End: <%= car.end_date %> </i>
             </div>
             <% end %>
           </div>
