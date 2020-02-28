@@ -1,9 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="d-flex profile-container justify-content-center">
-
       <!-- user profile harcoded for now -->
-
       <div class="manage-cars ">
         <div class="d-flex justify-content-between">
           <%= link_to "List your own car", dashboard_owner_path(@user), class: "btn btn-primary" %>
@@ -23,7 +21,6 @@
         </div>
         <% end %>
       </div>
-
       <div class="profile-card">
         <div>
           <h3>Personal Info</h3>
@@ -38,10 +35,9 @@
     </div>
   </div>
 </div>
-
-
 <div class="container">
   <div class="">
+
     <div class="">
       <% if @requests.blank? %>
       <% " " %>
@@ -53,6 +49,7 @@
       <% end %>
       <% end %>
       <div class="request-cards">
+
       <% @requests.where("status = ? AND drop_off_date < ?", "accepted", Date.today ).each do |request|%>
       <div class="request-card d-flex ">
         <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, :cloud_name => "dir0nw4ok"%>
@@ -69,3 +66,4 @@
       </div>
     </div>
   </div>
+

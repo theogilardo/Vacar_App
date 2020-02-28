@@ -8,12 +8,17 @@
   border-radius: 5px;
 }
 
-.staff-img img {
-  height: 200px;
+.staff-img {
+  width: 100%;
+  height: 225px;
 }
 
 .staff-card_action {
     position: absolute;
     left: 126px;
     bottom: 25px;
+}
+
+.bosses {
+  text-align: center;
 }
