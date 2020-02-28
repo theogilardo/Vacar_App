@@ -11,7 +11,7 @@
         </div>
         <h3>Your Rent Requests</h3>
         <% @requests.each do |request|%>
-        <div class="">
+        <div class="card-product">
           <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
           <div class="card-product-infos">
             <h2><%= request.car.brand %></h2>
@@ -74,7 +74,6 @@
   <div class="row">
     <div class="col-6 offset-3">
 
-      <%= link_to "List your own car", dashboard_owner_path(@user), class: "btn btn-primary btn-lg" %>
 
       <% @requests.each do |request|%>
       <div class="card-product">
@@ -90,7 +89,6 @@
       <% end %>
 
 
-      <h2> Previous bookings</h2>
       <% @requests.where("status = ? AND drop_off_date < ?", "accepted", Date.today ).each do |request|%>
       <div class="card-product">
         <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
@@ -104,7 +102,6 @@
 
       </div>
       <% end %>
-      <%= link_to "Rent a car", cars_path(request), class: "btn btn-primary" %>
 
     </div>
   </div>
