@@ -35,23 +35,14 @@
           <p>Home Location: Amsterdam</p>
         </div>
       </div>
-
     </div>
   </div>
 </div>
 
 
-
-
-
-
-
-
-
-
 <div class="container">
-  <div class="row">
-    <div class="col-8 offset-2">
+  <div class="previous-bookings">
+    <div class="col-8 offset-2 ">
 
       <h4 class="text-center">Previous bookings</h4>
       <% @requests.each do |request|%>
@@ -67,7 +58,6 @@
       </div>
       <% end %>
 
-
       <% @requests.where("status = ? AND drop_off_date < ?", "accepted", Date.today ).each do |request|%>
       <div class="card-product">
         <%= cl_image_tag request.car.photo.attached? ? request.car.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
@@ -77,10 +67,7 @@
           <p><%= request.drop_off_date %></p>
           <%= link_to "review", new_request_review_path(request),  class: "review-btn btn btn-primary btn-sm" %>
         </div>
-
-
       </div>
       <% end %>
-
     </div>
   </div>
